@@ -1,0 +1,28 @@
+db:
+  repository: public.ecr.aws/n4q9v7r0/naisjm-lab1
+  tag: db-v1
+  replicas: 1
+
+redis:
+  repository: public.ecr.aws/n4q9v7r0/naisjm-lab1
+  tag: redis-v1
+  replicas: 1
+
+app:
+  repository: public.ecr.aws/n4q9v7r0/naisjm-lab1
+  tag: app-v1
+  replicas: 1
+
+nginx:
+  repository: nginx
+  tag: latest
+  replicas: 1
+
+
+ingress:
+  healthCheckPath: /healthz
+  host: web.naisjm.shop
+  certificateArn: arn:aws:acm:ap-northeast-3:569934397842:certificate/fac06426-d06f-43fa-baf9-d3033d6fac5d
+  group:
+    name: shared-alb
+    order: "10"
